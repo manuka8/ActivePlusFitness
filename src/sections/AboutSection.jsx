@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaDumbbell, FaHeartbeat, FaUserFriends, FaTrophy, FaArrowRight } from 'react-icons/fa';
+import teamImg from '../assets/team.png';
 
 const features = [
   {
@@ -149,28 +150,38 @@ const AboutSection = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1 }}
-          className="p-10 rounded-[40px] bg-primary dark:bg-primary/90 text-white flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl shadow-primary/40"
+          className="relative group p-10 rounded-[40px] overflow-hidden flex flex-col md:flex-row items-center justify-between gap-10 shadow-2xl shadow-primary/40"
         >
-          <div className="flex items-center gap-6">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src={teamImg} 
+              alt="Our Team" 
+              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+            />
+            <div className="absolute inset-0 bg-primary/90 mix-blend-multiply transition-colors duration-500 group-hover:bg-primary/80" />
+          </div>
+
+          <div className="flex items-center gap-6 relative z-10">
             <div className="w-16 h-16 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center flex-shrink-0">
                <FaTrophy size={30} className="text-white" />
             </div>
             <div>
-              <h3 className="text-2xl font-black leading-tight">Elite Fitness Excellence</h3>
+              <h3 className="text-2xl font-black leading-tight text-white">Elite Fitness Excellence</h3>
               <p className="text-white/80 font-medium tracking-wide">Rated #1 Transformation Gym in New York City</p>
             </div>
           </div>
           
-          <div className="flex items-center gap-10">
+          <div className="flex items-center gap-10 relative z-10 text-white">
              <div className="text-center">
                 <div className="text-4xl font-black italic tabular-nums leading-none">98%</div>
                 <div className="text-[10px] font-bold uppercase tracking-[0.2em] mt-2 opacity-70">Success Rate</div>
              </div>
              <div className="h-10 w-[1px] bg-white/20 hidden sm:block" />
-             <div className="text-center text-white">
+             <div className="text-center">
                 <a 
                   href="#contact" 
-                  className="px-8 py-4 bg-white text-primary font-black rounded-full hover:bg-gray-100 transition-colors shadow-xl"
+                  className="px-8 py-4 bg-white text-primary font-black rounded-full hover:bg-gray-100 transition-all hover:scale-105 shadow-xl block"
                 >
                   Join the Tribe
                 </a>
