@@ -31,7 +31,7 @@ const HeroSection = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 
                     {/* Left Side - Content */}
-                    <div className="order-2 lg:order-1 space-y-6 sm:space-y-8 text-center lg:text-left">
+                    <div className="order-2 lg:order-1 space-y-4 sm:space-y-8 text-center lg:text-left">
                         {/* Badge */}
                         <div className="inline-block mb-4">
                             <span className="px-4 py-2 bg-primary/10 text-primary rounded-full text-sm font-semibold border border-primary/30">
@@ -100,7 +100,7 @@ const HeroSection = () => {
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start pt-2 sm:pt-4">
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start pt-2 sm:pt-4" style={{marginBottom: "0px"}}>
                             <a
                                 href="#contact"
                                 className="px-8 sm:px-10 py-4 sm:py-5 bg-primary text-white font-bold text-base sm:text-lg rounded-xl shadow-2xl shadow-primary/30 hover:bg-yellow-500 transition-colors duration-300"
