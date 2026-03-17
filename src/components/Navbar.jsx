@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { FiMenu, FiX, FiMoon, FiSun } from 'react-icons/fi';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import logo from '../assets/logo.png';
 
 const Navbar = ({ darkMode, toggleDarkMode }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { pathname } = useLocation();
 
   // Handle scroll effect
   useEffect(() => {
@@ -16,14 +18,52 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const isHomePage = pathname === '/';
+
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Services', href: '#services' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/', isRoute: true },
+    { name: 'About', href: isHomePage ? '#about' : '/#about', isRoute: !isHomePage },
+    { name: 'Services', href: isHomePage ? '#services' : '/#services', isRoute: !isHomePage },
+    { name: 'Trainers', href: isHomePage ? '#trainers' : '/#trainers', isRoute: !isHomePage },
+    { name: 'Blog', href: '/blog', isRoute: true },
+    { name: 'Contact', href: isHomePage ? '#contact' : '/#contact', isRoute: !isHomePage },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  const renderLink = (link, mobile = false) => {
+    const baseClass = mobile 
+      ? "block px-3 py-3 rounded-md text-base font-medium text-light-text dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
+      : `text-sm font-medium hover:text-primary transition-colors duration-200 ${
+          scrolled || !isHomePage
+            ? 'text-light-text dark:text-gray-300' 
+            : 'text-white/90 hover:text-primary drop-shadow-md'
+        }`;
+
+    if (link.isRoute) {
+      return (
+        <Link 
+          key={link.name} 
+          to={link.href} 
+          className={baseClass}
+          onClick={() => mobile && setIsOpen(false)}
+        >
+          {link.name}
+        </Link>
+      );
+    }
+
+    return (
+      <a 
+        key={link.name} 
+        href={link.href}
+        className={baseClass}
+        onClick={() => mobile && setIsOpen(false)}
+      >
+        {link.name}
+      </a>
+    );
+  };
 
   return (
     <nav 
@@ -37,33 +77,20 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
         <div className="flex justify-between items-center">
           {/* Logo */}
           <div className="flex-shrink-0 flex items-center">
-            <a href="#home" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <img src={logo} alt="ActivePlus Logo" className="h-16 md:h-20 w-auto object-contain" />
-              
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => (
-              <a 
-                key={link.name} 
-                href={link.href}
-                className={`text-sm font-medium hover:text-primary transition-colors duration-200 ${
-                  scrolled 
-                    ? 'text-light-text dark:text-gray-300' 
-                    : 'text-white/90 hover:text-primary drop-shadow-md'
-                }`}
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+            {navLinks.map((link) => renderLink(link))}
             
             {/* Dark Mode Toggle */}
             <button 
               onClick={toggleDarkMode}
               className={`p-2 rounded-full transition-colors duration-200 ${
-                scrolled 
+                scrolled || !isHomePage
                   ? 'bg-gray-100 dark:bg-slate-800 text-light-text dark:text-yellow-400 hover:bg-gray-200 dark:hover:bg-slate-700' 
                   : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
               }`}
@@ -78,7 +105,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <button 
               onClick={toggleDarkMode}
               className={`p-2 rounded-full ${
-                scrolled 
+                scrolled || !isHomePage
                   ? 'text-light-text dark:text-yellow-400' 
                   : 'text-white'
               }`}
@@ -88,7 +115,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             <button 
               onClick={toggleMenu} 
               className={`focus:outline-none ${
-                scrolled ? 'text-light-text dark:text-white' : 'text-white'
+                scrolled || !isHomePage ? 'text-light-text dark:text-white' : 'text-white'
               }`}
             >
               {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
@@ -107,16 +134,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
             className="md:hidden bg-light-bg dark:bg-dark-card border-b border-gray-200 dark:border-slate-800"
           >
             <div className="px-4 pt-2 pb-6 space-y-1 shadow-lg">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block px-3 py-3 rounded-md text-base font-medium text-light-text dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
-                >
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => renderLink(link, true))}
             </div>
           </motion.div>
         )}
