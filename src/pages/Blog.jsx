@@ -93,7 +93,14 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  
+  const filteredBlogs = useMemo(() => {
+    return blogsData.filter(blog => {
+      const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                           blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
+      const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory;
+      return matchesSearch && matchesCategory;
+    });
+  }, [searchTerm, selectedCategory]);
 
   return (
     <div className="pt-32 pb-24 bg-light-bg dark:bg-dark-bg min-h-screen transition-colors duration-500">
