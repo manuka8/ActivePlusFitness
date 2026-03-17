@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import TrainerCard from '../components/TrainerCard';
-import trainer1 from '../assets/trainer1.jpg'
-import trainer2 from '../assets/trainer2.jpg'
-import trainer3 from '../assets/trainer3.jpg'
-import trainer4 from '../assets/trainer4.jpg'
+import trainer1 from '../assets/trainer1.png'
+import trainer2 from '../assets/trainer2.png'
+import trainer3 from '../assets/trainer3.png'
+import trainer4 from '../assets/trainer4.png'
 const trainersData = [
   {
     name: "Marcus Wright",
