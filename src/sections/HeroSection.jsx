@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion, useMotionValue, useTransform } from 'framer-motion';
 import char1 from '../assets/character1.png';
-import { FaHeartbeat, FaFire, FaClock, FaRunning } from 'react-icons/fa';
+import { FaHeartbeat, FaFire, FaClock, FaRunning, FaDumbbell } from 'react-icons/fa';
 
 
 
@@ -100,7 +100,7 @@ const HeroSection = () => {
                         </p>
 
                         {/* CTA Buttons */}
-                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start pt-2 sm:pt-4" style={{marginBottom: "0px"}}>
+                        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center lg:justify-start pt-2 sm:pt-4" style={{ marginBottom: "0px" }}>
                             <a
                                 href="#contact"
                                 className="px-8 sm:px-10 py-4 sm:py-5 bg-primary text-white font-bold text-base sm:text-lg rounded-xl shadow-2xl shadow-primary/30 hover:bg-yellow-500 transition-colors duration-300"
@@ -160,7 +160,7 @@ const HeroSection = () => {
                             </div>
                             <div className="text-left">
                                 <div className="text-xs text-gray-400 font-medium">BPM</div>
-                                <div className="text-lg font-bold text-white leading-tight">142</div>
+                                <div className="text-lg font-bold text-gray-500 dark:text-white leading-tight">142</div>
                             </div>
                         </motion.div>
 
@@ -174,7 +174,7 @@ const HeroSection = () => {
                             </div>
                             <div className="text-left">
                                 <div className="text-xs text-gray-400 font-medium">Calories</div>
-                                <div className="text-lg font-bold text-white leading-tight">850 kcal</div>
+                                <div className="text-lg font-bold text-gray-500 dark:text-white leading-tight">850 kcal</div>
                             </div>
                         </motion.div>
 
@@ -188,7 +188,7 @@ const HeroSection = () => {
                             </div>
                             <div className="text-left">
                                 <div className="text-xs text-gray-400 font-medium">Time</div>
-                                <div className="text-lg font-bold text-white leading-tight">45:12</div>
+                                <div className="text-lg font-bold text-gray-500 dark:text-white leading-tight">45:12</div>
                             </div>
                         </motion.div>
 
@@ -202,7 +202,24 @@ const HeroSection = () => {
                             </div>
                             <div className="text-left">
                                 <div className="text-xs text-gray-400 font-medium">Steps</div>
-                                <div className="text-lg font-bold text-white leading-tight">12,400</div>
+                                <div className="text-lg font-bold text-gray-500 dark:text-white leading-tight">12,400</div>
+                            </div>
+                        </motion.div>
+
+                        
+
+                        <motion.div
+                            animate={{ y: [0, -20, 0]}}
+                            transition={{ duration: 4, repeat: Infinity }}
+                            whileHover={{ scale: 1.08 }}
+                            className="absolute top-10 left-5 bg-white/10 backdrop-blur-md p-4 rounded-2xl border border-white/20 shadow-xl flex items-center gap-3"
+                        >
+                            <div className="w-10 h-10 bg-green-500/20 text-green-500 rounded-lg flex items-center justify-center">
+                                <FaDumbbell size={20} />
+                            </div>
+                            <div>
+                                <div className="text-xs text-gray-400">Strength</div>
+                                <div className="text-lg font-bold text-gray-500 dark:text-white">Upper Body</div>
                             </div>
                         </motion.div>
                     </div>
