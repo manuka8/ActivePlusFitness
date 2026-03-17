@@ -93,14 +93,7 @@ const Blog = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const filteredBlogs = useMemo(() => {
-    return blogsData.filter(blog => {
-      const matchesSearch = blog.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                           blog.excerpt.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesCategory = selectedCategory === "All" || blog.category === selectedCategory;
-      return matchesSearch && matchesCategory;
-    });
-  }, [searchTerm, selectedCategory]);
+  
 
   return (
     <div className="pt-32 pb-24 bg-light-bg dark:bg-dark-bg min-h-screen transition-colors duration-500">
@@ -126,17 +119,7 @@ const Blog = () => {
 
         {/* Filtering & Search Section */}
         <div className="mb-12 flex flex-col lg:flex-row gap-6 items-center justify-between sticky top-24 z-30 py-4 bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-md">
-          {/* Search Bar */}
-          <div className="relative w-full lg:max-w-md group">
-            <FiSearch className="absolute left-5 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary transition-colors" size={20} />
-            <input 
-              type="text" 
-              placeholder="Search articles..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-14 pr-6 py-4 bg-white dark:bg-dark-card border border-gray-100 dark:border-slate-800 rounded-2xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-light-text dark:text-white shadow-sm"
-            />
-          </div>
+          
 
           {/* Categories Filter */}
           <div className="flex gap-2 overflow-x-auto pb-2 w-full lg:w-auto no-scrollbar">
