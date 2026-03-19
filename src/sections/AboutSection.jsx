@@ -157,9 +157,9 @@ const AboutSection = () => {
             <img 
               src={teamImg} 
               alt="Our Team" 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" 
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-110" 
             />
-            <div className="absolute inset-0 bg-primary/90 mix-blend-multiply transition-colors duration-500 group-hover:bg-primary/80" />
+            <div className="absolute inset-0 bg-primary/75 mix-blend-multiply transition-colors duration-500 group-hover:bg-primary/70" />
           </div>
 
           <div className="flex items-center gap-6 relative z-10">

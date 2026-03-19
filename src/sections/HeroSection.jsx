@@ -34,12 +34,12 @@ const HeroSection = () => {
     return (
         <section
             id="home"
-            className="relative h-screen flex items-center justify-center pt-16 sm:pt-20 overflow-hidden bg-light-bg dark:bg-dark-bg transition-colors duration-300"
+            className="relative min-h-[100dvh]  lg:h-screen flex items-center justify-center pt-24 pb-5 lg:pt-28 lg:pb-12 overflow-hidden bg-light-bg dark:bg-dark-bg transition-colors duration-300"
         >
             {/* Background Effects */}
 
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div className="max-w-7xl mx-auto px-4 pt-10 sm:px-6 lg:px-8 relative z-10 w-full">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
 
                     {/* Left Side - Content */}

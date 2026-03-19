@@ -32,19 +32,18 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   const toggleMenu = () => setIsOpen(!isOpen);
 
   const renderLink = (link, mobile = false) => {
-    const baseClass = mobile 
+    const baseClass = mobile
       ? "block px-3 py-3 rounded-md text-base font-medium text-light-text dark:text-gray-200 hover:text-primary dark:hover:text-primary hover:bg-gray-50 dark:hover:bg-slate-800 transition-colors"
-      : `text-sm font-medium hover:text-primary transition-colors duration-200 ${
-          scrolled || !isHomePage
-            ? 'text-light-text dark:text-gray-300' 
-            : 'text-white/90 hover:text-primary drop-shadow-md'
-        }`;
+      : `text-sm font-medium hover:text-primary transition-colors duration-200 ${scrolled || !isHomePage
+        ? 'text-light-text dark:text-gray-300'
+        : 'text-graye/90 dark:text-white hover:text-primary drop-shadow-md'
+      }`;
 
     if (link.isRoute) {
       return (
-        <Link 
-          key={link.name} 
-          to={link.href} 
+        <Link
+          key={link.name}
+          to={link.href}
           className={baseClass}
           onClick={() => mobile && setIsOpen(false)}
         >
@@ -54,8 +53,8 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
     }
 
     return (
-      <a 
-        key={link.name} 
+      <a
+        key={link.name}
         href={link.href}
         className={baseClass}
         onClick={() => mobile && setIsOpen(false)}
@@ -66,12 +65,11 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   return (
-    <nav 
-      className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? 'bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-md shadow-sm dark:shadow-slate-800/50 py-3' 
+    <nav
+      className={`fixed w-full z-50 transition-all duration-300 ${scrolled
+          ? 'bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-md shadow-sm dark:shadow-slate-800/50 py-3'
           : 'bg-transparent py-5'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
@@ -85,15 +83,14 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link) => renderLink(link))}
-            
+
             {/* Dark Mode Toggle */}
-            <button 
+            <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition-colors duration-200 ${
-                scrolled || !isHomePage
-                  ? 'bg-gray-100 dark:bg-slate-800 text-light-text dark:text-yellow-400 hover:bg-gray-200 dark:hover:bg-slate-700' 
-                  : 'bg-white/20 text-white hover:bg-white/30 backdrop-blur-sm'
-              }`}
+              className={`p-2 rounded-full transition-colors duration-200 ${scrolled || !isHomePage
+                  ? 'bg-gray-100 dark:bg-slate-800 text-light-text dark:text-yellow-400 hover:bg-gray-200 dark:hover:bg-slate-700'
+                  : 'bg-gray-700/20 text-gray-700 dark:text-white hover:bg-white/30 backdrop-blur-sm'
+                }`}
               aria-label="Toggle Dark Mode"
             >
               {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
@@ -102,21 +99,19 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
 
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center space-x-4">
-            <button 
+            <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full ${
-                scrolled || !isHomePage
-                  ? 'text-light-text dark:text-yellow-400' 
+              className={`p-2 rounded-full ${scrolled || !isHomePage
+                  ? 'text-light-text dark:text-yellow-400'
                   : 'text-white'
-              }`}
+                }`}
             >
               {darkMode ? <FiSun size={24} /> : <FiMoon size={24} />}
             </button>
-            <button 
-              onClick={toggleMenu} 
-              className={`focus:outline-none ${
-                scrolled || !isHomePage ? 'text-light-text dark:text-white' : 'text-white'
-              }`}
+            <button
+              onClick={toggleMenu}
+              className={`focus:outline-none ${scrolled || !isHomePage ? 'text-light-text dark:text-white' : 'text-white'
+                }`}
             >
               {isOpen ? <FiX size={28} /> : <FiMenu size={28} />}
             </button>
@@ -127,7 +122,7 @@ const Navbar = ({ darkMode, toggleDarkMode }) => {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
