@@ -1,10 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import Home from './pages/Home';
+import Blog from './pages/Blog';
+import BlogDetail from './pages/BlogDetail';
 
 function App() {
   const [darkMode, setDarkMode] = useState(false);
+  const { pathname, hash } = useLocation();
+
+  // Handle scroll on route or hash change
+  useEffect(() => {
+    if (hash) {
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
 
   // Check system preference or localStorage on mount
   useEffect(() => {
@@ -30,10 +48,14 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col font-sans transition-colors duration-300 relative">
+    <div className="min-h-screen flex flex-col font-sans transition-colors duration-300 relative bg-white dark:bg-dark-bg">
       <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
       <main className="flex-grow">
-        <Home />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:id" element={<BlogDetail />} />
+        </Routes>
       </main>
       <Footer />
     </div>
