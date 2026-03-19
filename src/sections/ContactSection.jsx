@@ -75,13 +75,18 @@ const ContactSection = () => {
               </div>
             </div>
 
-            {/* Map Placeholder */}
-            <div className="w-full h-48 bg-gray-200 dark:bg-slate-800 rounded-2xl overflow-hidden mt-4 relative">
-              <img 
-                src="https://placehold.co/800x400/1e293b/d5a310?text=Map+Location" 
-                alt="Map Location"
-                className="w-full h-full object-cover opacity-80"
-              />
+            {/* Real Google Map Location */}
+            <div className="w-full h-48 sm:h-64 rounded-2xl overflow-hidden mt-4 shadow-md relative bg-gray-200 dark:bg-slate-800">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15843.435773121356!2d79.8552174!3d6.8962657!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae25963120b1509%3A0xedec043f458e0a3!2sColts%20Cricket%20Club!5e0!3m2!1sen!2slk!4v1710500000000!5m2!1sen!2slk"
+                width="100%" 
+                height="100%" 
+                style={{ border: 0 }} 
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                title="ActivePlus Fitness Location"
+              ></iframe>
             </div>
           </motion.div>
 
