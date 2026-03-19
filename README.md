@@ -3,8 +3,8 @@
 A highly responsive, premium promotional website for a local fitness brand launching a new gym. Designed to attract new members by beautifully showcasing the gym’s services, trainers, and allowing interested users to submit inquiries securely.
 
 ## 🔗 Project Links
-- **Live Demo:** [https://activeplusfitness.vercel.app]
-- **Figma Design:** [https://www.figma.com/proto/04134553-4490-468f-9670-94456940774b/Active-Plus-Fitness?type=design&node-id=1-2&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=1%3A2]
+- **Live Demo:** https://activeplusfitness.vercel.app
+- **Figma Design:** https://www.figma.com/design/vLn7ucAGxJ5lzqEmlnPw82/Active--Fitness-Website-Design?node-id=0-1&t=WrkigBkIXxO3W2Ql-1
 
 ## 🎯 Features & Requirements
 This project fulfills the core internship evaluation requirements and successfully implements all the bonus criteria:
