@@ -19,20 +19,6 @@ import nutritionImg from '../assets/nutrition.png';
 
 const services = [
   {
-    icon: <GiMuscleUp size={32} />,
-    title: "Strength Training",
-    description: "Build muscle and increase your power with our comprehensive free weights and resistance machines.",
-    bgImage: strengthImg,
-    tag: "Power"
-  },
-  {
-    icon: <IoFitnessOutline size={32} />,
-    title: "Personal Training",
-    description: "1-on-1 coaching sessions designed to push your limits and maximize your results in minimal time.",
-    bgImage: personalImg,
-    tag: "Elite"
-  },
-  {
     icon: <IoBicycleOutline size={32} />,
     title: "Cardio Programs",
     description: "Improve your endurance and stamina with top-tier treadmills, ellipticals, and cycling classes.",
@@ -52,6 +38,20 @@ const services = [
     description: "Intense functional movements performed at high intensity to build athletic conditioning.",
     bgImage: crossfitImg,
     tag: "Functional"
+  },
+  {
+    icon: <GiMuscleUp size={32} />,
+    title: "Strength Training",
+    description: "Build muscle and increase your power with our comprehensive free weights and resistance machines.",
+    bgImage: strengthImg,
+    tag: "Power"
+  },
+  {
+    icon: <IoFitnessOutline size={32} />,
+    title: "Personal Training",
+    description: "1-on-1 coaching sessions designed to push your limits and maximize your results in minimal time.",
+    bgImage: personalImg,
+    tag: "Elite"
   },
   {
     icon: <IoNutritionOutline size={32} />,
@@ -83,8 +83,8 @@ const ServicesSection = () => {
   };
 
   return (
-    <section id="services" className="py-24 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="relative min-h-[100dvh]  lg:h-screen flex items-center py-12 lg:py-0 bg-light-bg dark:bg-dark-bg transition-colors duration-500 overflow-hidden">
+      <div className="max-w-7xl mx-auto pt-10 px-4 sm:px-6 lg:px-8 w-full">
         
         {/* Header with Navigation */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -166,7 +166,7 @@ const ServicesSection = () => {
                     {service.title}
                   </h3>
                   
-                  <p className="text-white/70 text-sm leading-relaxed mb-6 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-500">
+                  <p className="text-white/70 text-sm leading-relaxed mb-6">
                     {service.description}
                   </p>
 
